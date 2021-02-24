@@ -1,0 +1,9 @@
+.form-container {
+  height: 20vh;
+  display: table;
+  margin-top: 8vh;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-items: center;
+}

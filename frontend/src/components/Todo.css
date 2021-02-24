@@ -1,0 +1,24 @@
+.todo {
+  margin: 0.3rem;
+  background: white;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* transition: all 1s ease; */
+}
+.todo.actions {
+  float: right;
+}
+
+.badge-outline {
+  color: #fb3333;
+  border: 1px solid #999;
+  background-color: rgb(253, 191, 191);
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.badge-outline.badge-danger {
+  border-color: #fb3333;
+}

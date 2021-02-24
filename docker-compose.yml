@@ -1,0 +1,38 @@
+version: '3.6'
+
+services:
+  todo-db:
+    image: postgres:10
+    container_name: todo-db
+    restart: always
+    environment:
+      - POSTGRES_DB=tododb
+      - POSTGRES_USER=tododbuser
+      - POSTGRES_PASSWORD=tododbpassword
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  todo-app:
+    build: backend
+    container_name: todo-app
+    environment:
+      PYTHONUNBUFFERED: 'true'
+    ports:
+      - 8000:8000
+    depends_on:
+      - todo-db
+
+  todo-ui:
+    build: frontend
+    container_name: todo-ui
+
+  todo-proxy:
+    build: proxy
+    container_name: todo-proxy
+    ports:
+      - 80:80
+
+volumes:
+  dbdata:

@@ -1,0 +1,17 @@
+# Core
+Flask
+gunicorn
+eventlet
+
+# REST API
+Flask-Restful
+
+# Database
+Flask-SQLAlchemy
+Flask-Marshmallow
+marshmallow-sqlalchemy
+Flask-Migrate
+Flask-Script
+psycopg2-binary
+
+Flask-Cors
