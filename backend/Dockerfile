@@ -5,6 +5,7 @@ RUN apt-get update && apt-get install -qq -y \
 
 ENV INSTALL_PATH /todo
 RUN mkdir -p ${INSTALL_PATH}
+RUN mkdir -p /var/log/todo
 
 WORKDIR ${INSTALL_PATH}
 
@@ -14,5 +15,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-# CMD gunicorn --worker-class=eventlet --log-level debug -c "python:config.gunicorn" "todo.app:create_app()"
-CMD gunicorn --worker-class=eventlet --log-level debug --bind 0.0.0.0:8000 "todo.app:create_app()"
+CMD gunicorn --worker-class=eventlet --log-level debug --access-logfile /var/log/todo/gunicorn-access.log --error-logfile /var/log/todo/gunicorn-error.log --bind 0.0.0.0:8000 "todo.app:create_app()" 

@@ -10,7 +10,7 @@ services:
       - POSTGRES_USER=tododbuser
       - POSTGRES_PASSWORD=tododbpassword
     volumes:
-      - dbdata:/var/lib/postgresql/data
+      - todo-db-data:/var/lib/postgresql/data
     ports:
       - 5432:5432
 
@@ -19,6 +19,8 @@ services:
     container_name: todo-app
     environment:
       PYTHONUNBUFFERED: 'true'
+    volumes:
+      - todo-app-logs:/var/log/todo
     ports:
       - 8000:8000
     depends_on:
@@ -35,4 +37,5 @@ services:
       - 80:80
 
 volumes:
-  dbdata:
+  todo-db-data:
+  todo-app-logs:
