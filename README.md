@@ -14,5 +14,21 @@ Four Docker containers are used to run this application.
 - Gunicorn + Flask
 - PostgreSQL
 
+## Usage
+### Prerequisite
+- docker
+- docker-compose
+
+### Run the app
+```bash
+$ git clone git@github.com:mmurayama/todo-react-flask-pgsql.git
+$ cd todo-react-flask-pgsql
+$ docker-compose up --build
+$ docker exec -it todo-app bash
+$ python manage.py db migrate
+$ python manage.py db upgrade
+```
+Open a browser and go to http://localhost
+
 ## License
 MIT License
